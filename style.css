@@ -79,3 +79,16 @@ nav {
     border-bottom: 1px solid #ddd;
     padding-bottom: 5px;
 }
+
+
+.contact-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+}
+
+.orcid-qr img {
+    width: 120px;
+    height: auto;
+}
