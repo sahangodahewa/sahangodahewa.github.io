@@ -1,263 +1,1623 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sahan M. Godahewa</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hasini Weerathunge | Postdoctoral Researcher</title>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f7f5f2;
+      --text: #1a1a1a;
+      --muted: #6b6560;
+      --accent: #2d5a4e;
+      --border: #dedad5;
+      --card: #ffffff;
+      --serif: 'EB Garamond', Georgia, serif;
+      --sans: 'DM Sans', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-weight: 300;
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      background: rgba(247,245,242,0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+      padding: 0 max(2rem, 8vw);
+      display: flex; align-items: center; justify-content: space-between;
+      height: 60px;
+    }
+    .nav-name {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      letter-spacing: 0.01em;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* LAYOUT */
+    main { max-width: 860px; margin: 0 auto; padding: 0 2rem; }
+    section { padding: 5rem 0; border-bottom: 1px solid var(--border); }
+    section:last-child { border-bottom: none; }
+
+    /* HERO */
+    #hero {
+      padding-top: 140px;
+      padding-bottom: 5rem;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 3rem;
+      align-items: start;
+    }
+    .hero-text h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.4rem, 5vw, 3.4rem);
+      font-weight: 400;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.6rem;
+    }
+    .hero-text h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+    .hero-subtitle {
+      font-size: 0.85rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
+    .hero-desc {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 520px;
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+    .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem; }
+    .tag {
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      padding: 0.3rem 0.75rem;
+      border-radius: 2px;
+      opacity: 0.8;
+    }
+    .hero-links { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn {
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.6rem 1.4rem;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      border: 1px solid var(--accent);
+    }
+    .btn-primary:hover { background: #1e3f36; border-color: #1e3f36; }
+    .btn-outline {
+      background: transparent;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+    }
+    .btn-outline:hover { background: var(--accent); color: #fff; }
+
+    .hero-avatar {
+      width: 264px; height: 264px;
+      border-radius: 50%;
+      overflow: hidden;
+      flex-shrink: 0;
+      box-shadow: 0 4px 28px rgba(45,90,78,0.18);
+      border: 4px solid #dedad5;
+    }
+
+    /* SECTION HEADINGS */
+    .section-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+    .section-title {
+      font-family: var(--serif);
+      font-size: 2rem;
+      font-weight: 400;
+      margin-bottom: 2.5rem;
+      line-height: 1.2;
+    }
+
+    /* ABOUT */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    .about-text { min-width: 0; }
+    .about-text p { color: var(--muted); font-size: 0.95rem; line-height: 1.9; margin-bottom: 1rem; }
+    .about-details { min-width: 0; }
+    .detail-row {
+      display: flex; flex-direction: column;
+      padding: 0.9rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .detail-row:first-child { border-top: 1px solid var(--border); }
+    .detail-label {
+      font-size: 0.7rem; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 0.2rem;
+    }
+    .detail-val { font-size: 0.92rem; color: var(--text); word-wrap: break-word; overflow-wrap: break-word; }
+
+    /* PUBLICATIONS */
+    .pub-list { display: flex; flex-direction: column; gap: 1.5rem; }
+    .pub-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.4rem 1.6rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .pub-item:hover {
+      border-color: var(--accent);
+      box-shadow: 0 2px 16px rgba(45,90,78,0.07);
+    }
+    .pub-year {
+      font-size: 0.7rem; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--accent);
+      margin-bottom: 0.4rem;
+    }
+    .pub-title {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 400;
+      margin-bottom: 0.4rem;
+      line-height: 1.4;
+    }
+    .pub-authors {
+      font-size: 0.82rem; color: var(--muted); margin-bottom: 0.3rem;
+    }
+    .pub-journal {
+      font-size: 0.82rem; color: var(--muted);
+      font-style: italic;
+    }
+    .pub-links { margin-top: 0.8rem; display: flex; gap: 0.8rem; }
+    .pub-link {
+      font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--accent); text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+    .pub-link:hover { border-color: var(--accent); }
+
+    /* PROJECTS */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+    }
+    .project-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.6rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .project-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 2px 16px rgba(45,90,78,0.07);
+    }
+    .project-icon {
+      font-size: 1.4rem; margin-bottom: 1rem;
+      display: block;
+    }
+    .project-title {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      font-weight: 400;
+      margin-bottom: 0.5rem;
+    }
+    .project-desc {
+      font-size: 0.84rem; color: var(--muted); line-height: 1.75;
+    }
+
+    /* TALKS */
+    .talks-list { display: flex; flex-direction: column; gap: 0; }
+    .talk-item {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 1.5rem;
+      padding: 1.4rem 0;
+      border-bottom: 1px solid var(--border);
+      align-items: start;
+    }
+    .talk-item:first-child { border-top: 1px solid var(--border); }
+    .talk-year {
+      font-size: 0.75rem; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--accent);
+      padding-top: 0.2rem;
+    }
+    .talk-title {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 400;
+      margin-bottom: 0.3rem;
+    }
+    .talk-venue {
+      font-size: 0.82rem; color: var(--muted);
+    }
+    .talk-type {
+      display: inline-block;
+      font-size: 0.65rem; letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: rgba(45,90,78,0.08);
+      color: var(--accent);
+      padding: 0.15rem 0.5rem;
+      border-radius: 2px;
+      margin-left: 0.5rem;
+      vertical-align: middle;
+    }
+
+    /* CONTACT */
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    .contact-text p {
+      font-size: 0.95rem; color: var(--muted); line-height: 1.9; margin-bottom: 1.2rem;
+    }
+    .contact-links { display: flex; flex-direction: column; gap: 1rem; }
+    .contact-link {
+      display: flex; align-items: center; gap: 0.8rem;
+      font-size: 0.88rem; color: var(--text);
+      text-decoration: none;
+      padding: 0.9rem 1.1rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      transition: border-color 0.2s;
+    }
+    .contact-link:hover { border-color: var(--accent); }
+    .contact-icon { font-size: 1rem; }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 2.5rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+
+    /* FADE-IN ANIMATION */
+    .fade-in {
+      opacity: 0; transform: translateY(18px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* MENTORING */
+    .mentoring-philosophy {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.8rem 2rem;
+      margin-bottom: 3rem;
+    }
+    .mentoring-philosophy p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.9;
+      margin-bottom: 0.8rem;
+    }
+    .mentoring-philosophy p:last-child { margin-bottom: 0; }
+
+    .mentoring-category {
+      margin-bottom: 2.5rem;
+    }
+    .mentoring-category-title {
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .mentee-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+    .mentee-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.1rem 1.3rem;
+      transition: border-color 0.2s;
+    }
+    .mentee-card:hover { border-color: var(--accent); }
+    .mentee-name {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 400;
+      margin-bottom: 0.3rem;
+    }
+    .mentee-detail {
+      font-size: 0.78rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .mentee-tag {
+      display: inline-block;
+      font-size: 0.62rem;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      background: rgba(45,90,78,0.08);
+      color: var(--accent);
+      padding: 0.15rem 0.5rem;
+      border-radius: 2px;
+      margin-top: 0.5rem;
+    }
+
+    .programs-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+    .program-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.4rem 1.5rem;
+      transition: border-color 0.2s;
+    }
+    .program-card:hover { border-color: var(--accent); }
+    .program-name {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      font-weight: 400;
+      margin-bottom: 0.4rem;
+    }
+    .program-desc {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+    .program-meta {
+      font-size: 0.7rem;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-top: 0.6rem;
+    }
+
+    .opportunities-box {
+      background: rgba(45,90,78,0.04);
+      border: 1px solid rgba(45,90,78,0.2);
+      border-radius: 4px;
+      padding: 1.6rem 2rem;
+      margin-top: 1rem;
+    }
+    .opportunities-box h4 {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 400;
+      margin-bottom: 0.8rem;
+    }
+    .opportunities-box p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.85;
+      margin-bottom: 0.6rem;
+    }
+    .opportunities-box p:last-child { margin-bottom: 0; }
+
+    /* TEACHING */
+    .teaching-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+      margin-bottom: 3rem;
+    }
+    .teaching-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.4rem 1.5rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .teaching-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 2px 16px rgba(45,90,78,0.07);
+    }
+    .teaching-card-icon { font-size: 1.3rem; display: block; margin-bottom: 0.8rem; }
+    .teaching-card-title {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 400;
+      margin-bottom: 0.4rem;
+    }
+    .teaching-card-desc {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+    .teaching-card-level {
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-top: 0.6rem;
+    }
+
+    .tutorial-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.6rem 1.8rem;
+      margin-bottom: 1.2rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      position: relative;
+    }
+    .tutorial-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 2px 16px rgba(45,90,78,0.07);
+    }
+    .tutorial-card-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 0.7rem;
+    }
+    .tutorial-card-title {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 400;
+      line-height: 1.3;
+    }
+    .tutorial-badge {
+      font-size: 0.62rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.6rem;
+      border-radius: 2px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .tutorial-badge-live {
+      background: rgba(45,90,78,0.1);
+      color: var(--accent);
+      border: 1px solid rgba(45,90,78,0.25);
+    }
+    .tutorial-badge-soon {
+      background: rgba(107,101,96,0.08);
+      color: var(--muted);
+      border: 1px solid var(--border);
+    }
+    .tutorial-card-desc {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+    .tutorial-topics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1rem;
+    }
+    .tutorial-topic {
+      font-size: 0.68rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid rgba(45,90,78,0.25);
+      padding: 0.2rem 0.6rem;
+      border-radius: 2px;
+    }
+    .tutorial-footer {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      padding-top: 0.8rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+    .tutorial-link {
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid var(--accent);
+      transition: opacity 0.2s;
+    }
+    .tutorial-link:hover { opacity: 0.7; }
+
+    .experience-row {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 1.5rem;
+      padding: 1.2rem 0;
+      border-bottom: 1px solid var(--border);
+      align-items: start;
+    }
+    .experience-row:first-child { border-top: 1px solid var(--border); }
+    .experience-year {
+      font-size: 0.75rem;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      padding-top: 0.1rem;
+    }
+    .experience-title {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 400;
+      margin-bottom: 0.2rem;
+    }
+    .experience-role {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    /* TRAINING */
+    .training-category { margin-bottom: 2.8rem; }
+    .training-category-title {
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .training-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+    .training-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.1rem 1.3rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .training-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 2px 12px rgba(45,90,78,0.07);
+    }
+    .training-card-year {
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.35rem;
+    }
+    .training-card-title {
+      font-family: var(--serif);
+      font-size: 0.98rem;
+      font-weight: 400;
+      margin-bottom: 0.25rem;
+      line-height: 1.35;
+    }
+    .training-card-org {
+      font-size: 0.78rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* BEYOND THE LAB */
+    .beyond-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+    .beyond-feature {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      transition: box-shadow 0.2s;
+    }
+    .beyond-feature:hover { box-shadow: 0 4px 24px rgba(45,90,78,0.09); }
+    .beyond-feature-header {
+      padding: 1.6rem 1.8rem 1.2rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .beyond-feature-icon { font-size: 1.8rem; margin-bottom: 0.8rem; display: block; }
+    .beyond-feature-title {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      font-weight: 400;
+      margin-bottom: 0.4rem;
+    }
+    .beyond-feature-sub {
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .beyond-feature-body { padding: 1.4rem 1.8rem; }
+    .beyond-feature-body p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.85;
+      margin-bottom: 1rem;
+    }
+    .beyond-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      text-decoration: none;
+      border: 1px solid var(--accent);
+      padding: 0.5rem 1rem;
+      border-radius: 2px;
+      transition: all 0.2s;
+      margin-right: 0.6rem;
+      margin-bottom: 0.6rem;
+    }
+    .beyond-link:hover { background: var(--accent); color: #fff; }
+    .parks-list { display: flex; flex-direction: column; gap: 0; }
+    .park-item {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 0.65rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+    .park-item:first-child { border-top: 1px solid var(--border); }
+    .park-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex-shrink: 0; opacity: 0.6; }
+    .park-state { font-size: 0.68rem; letter-spacing: 0.07em; text-transform: uppercase; color: var(--accent); margin-left: auto; opacity: 0.7; }
+
+    /* RESPONSIVE END */
+    @media (max-width: 640px) {
+      #hero { grid-template-columns: 1fr; }
+      .hero-avatar { display: none; }
+      .about-grid, .projects-grid, .contact-inner, .beyond-grid { grid-template-columns: 1fr; }
+      .talk-item { grid-template-columns: 60px 1fr; gap: 1rem; }
+      nav { padding: 0 1rem; }
+      .nav-links { gap: 0.8rem; }
+      main { padding: 0 1.2rem; }
+      .mentee-grid, .programs-grid, .training-grid { grid-template-columns: 1fr; }
+      .teaching-grid { grid-template-columns: 1fr; }
+      .experience-row { grid-template-columns: 1fr; gap: 0.3rem; }
+    }
+  </style>
 </head>
 <body>
 
-<header>
-    <h1>Sahan M. Godahewa, Ph.D. </h1>
-    <p>University of Kansas | Materials Scientist | Computational Chemist</p>
-</header>
-
-<nav>
-    <button class="tab-btn active" onclick="openTab('home')">Home</button>
-    <button class="tab-btn" onclick="openTab('research')">Research</button>
-    <button class="tab-btn" onclick="openTab('publications')">Publications</button>
-    <button class="tab-btn" onclick="openTab('projects')">Projects</button>
-    <button class="tab-btn" onclick="openTab('cv')">CV</button>
-    <button class="tab-btn" onclick="openTab('contact')">Contact</button>
-</nav>
-
-<main>
-
-<section id="home" class="tab-content active">
-    <h2>About Me</h2>
-
-    <img src="assets/img/profile.jpg" alt="Profile Photo" class="profile-photo">
-
-    <p>
-        I am a computational scientist specializing in molecular simulation,
-        adsorption phenomena, porous materials, surface chemistry, and machine
-        learning applications in materials science.
-    </p>
-
-    <h3>Research Interests</h3>
-    <ul>
-        <li>Dynamics of liquids in mesoporous structures</li>
-        <li>Carbon Capture and Storage</li>
-        <li>Surface Chemistry and reactions</li>
-        <li>Machine Learning for Materials Science</li>
+  <nav>
+    <a class="nav-name" href="#hero">H. Weerathunge</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#talks">Talks</a></li>
+      <li><a href="#mentoring">Mentoring</a></li>
+      <li><a href="#teaching">Teaching</a></li>
+      <li><a href="#training">Training</a></li>
+      <li><a href="#beyond">Beyond the Lab</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
-</section>
+  </nav>
 
-<section id="research" class="tab-content">
-    <h2>Research</h2>
+  <main>
 
-    <h3>Molecular Simulation</h3>
-    <p>
-        Investigating adsorption, diffusion, and transport phenomena in porous materials.
-    </p>
+    <!-- HERO -->
+    <section id="hero">
+      <div class="hero-text fade-in">
+        <p class="hero-subtitle">Postdoctoral Researcher · University of Michigan</p>
+        <h1>Hasini<br><em>Weerathunge</em></h1>
+        <p class="hero-desc">
+          Investigating the neural and physiological mechanisms of speech motor control using
+          multimodal neuroimaging, noninvasive neuromodulation, and neurocomputational modelling —
+          with a focus on stuttering, Parkinson's disease, and voice disorders.
+        </p>
+        <div class="tags">
+          <span class="tag">Speech Motor Control</span>
+          <span class="tag">Neurostimulation</span>
+          <span class="tag">Neuroimaging</span>
+          <span class="tag">Neurocomputational Models</span>
+        </div>
+        <div class="hero-links">
+          <a href="#publications" class="btn btn-primary">View Publications</a>
+          <a href="#contact" class="btn btn-outline">Get in Touch</a>
+        </div>
+      </div>
+      <div class="hero-avatar fade-in"><img src="data:image/jpeg;base64,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" alt="Hasini Weerathunge" style="width:100%;height:100%;object-fit:cover;object-position:center top;" /></div>
+    </section>
 
-    <h3>Machine Learning</h3>
-    <p>
-        Applying data-driven methods to accelerate materials discovery.
-    </p>
+    <!-- ABOUT -->
+    <section id="about">
+      <p class="section-label">Background</p>
+      <h2 class="section-title">About</h2>
+      <div class="about-grid">
+        <div class="about-text fade-in">
+          <p>
+            I am a Postdoctoral Research Fellow and Michigan Pioneer Fellow in the Department of
+            Psychiatry at the University of Michigan (Dr. Soo-Eun Chang's Speech Neurophysiology Lab),
+            where I investigate the neural bases of stuttering using structural and functional MRI,
+            diffusion-weighted imaging, EEG, and noninvasive neuromodulation (tACS, tDCS, LIFU).
+          </p>
+          <p>
+            I completed my Ph.D. and M.Sc. in Biomedical Engineering at Boston University (Dr. Cara
+            Stepp's Lab), where my dissertation focused on sensorimotor characterisation and
+            neurocomputational modelling of speech motor control in Parkinson's disease and
+            hyperfunctional voice disorders.
+          </p>
+          <p>
+            My broader goal is to develop neuromodulatory therapeutics that enhance quality of life
+            for clinical populations with voice and speech disorders, bridging basic neuroscience
+            with translational rehabilitation engineering.
+          </p>
+        </div>
+        <div class="about-details fade-in">
+          <div class="detail-row">
+            <span class="detail-label">Position</span>
+            <span class="detail-val">Postdoctoral Research Fellow · Michigan Pioneer Fellow</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Department</span>
+            <span class="detail-val">Psychiatry, University of Michigan</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">PhD</span>
+            <span class="detail-val">Biomedical Engineering, Boston University (2024)</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">MSc</span>
+            <span class="detail-val">Biomedical Engineering, Boston University (2022)</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">BSc</span>
+            <span class="detail-val">Electronics &amp; Telecommunication Engineering, University of Moratuwa, Sri Lanka (2015)</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Research Areas</span>
+            <span class="detail-val">Speech Motor Control · Stuttering · Parkinson's Disease · Neuroimaging · Neurostimulation · Neurocomputational Modelling</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Email</span>
+            <span class="detail-val">weerathh@med.umich.edu</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <h3>Methods</h3>
-    <ul>
-        <li>Molecular Dynamics</li>
-        <li>Monte Carlo</li>
-        <li>Density Functional Theory</li>
-        <li>Machine Learning</li>
-    </ul>
-</section>
+    <!-- PUBLICATIONS -->
+    <section id="publications">
+      <p class="section-label">Research Output</p>
+      <h2 class="section-title">Publications</h2>
+      <div class="pub-list">
 
-<section id="publications" class="tab-content">
-    <h2>Publications</h2>
+        <div class="pub-item fade-in">
+          <p class="pub-year">2025</p>
+          <p class="pub-title">Characterization of Vocal Motor Control Using Laryngeal Kinematics in Individuals with Hyperfunctional Voice Disorders</p>
+          <p class="pub-authors">Weerathunge, H. R., Vojtech, J., Dunsmuir, C. J., Cocroft, S. J., Díaz-Cádiz, M. E., McKenna, V., &amp; Stepp, C. E.</p>
+          <p class="pub-journal">Journal of Speech, Language, and Hearing Research, 68(4), 1743–1757</p>
+          <div class="pub-links"><a href="https://pubmed.ncbi.nlm.nih.gov/40106413/" target="_blank" class="pub-link">PMID: 40106413 →</a></div>
+        </div>
 
-    <div class="card">
-        <h3 style="color: #0066cc;">An insightful approach to understanding the mechanism of amino acid adsorption on inorganic surfaces: Glycine on silica</h3>
-        <p><strong>Authors :</strong> <strong>Godahewa, S.M.</strong>, Tillekaratne, A.</p>
-        <p><strong>Journal, Year:</strong> Chemistry & Chemical Technology, 2023</p>
-        <a href="assets/pdf/paper1.pdf" target="_blank" style="color: #9c27b0; text-decoration: underline; font-size: 0.95rem;">
-    📄 View PDF
+        <div class="pub-item fade-in">
+          <p class="pub-year">2022</p>
+          <p class="pub-title">LaDIVA: A neurocomputational model providing laryngeal motor control for speech acquisition and production</p>
+          <p class="pub-authors">Weerathunge, H. R., Alzamendi, G. A., Cler, G. J., Guenther, F. H., Stepp, C. E., &amp; Zañartu, M.</p>
+          <p class="pub-journal">PLOS Computational Biology, 18(6), e1010159</p>
+          <div class="pub-links"><a href="https://pubmed.ncbi.nlm.nih.gov/35737706/" target="_blank" class="pub-link">PMID: 35737706 →</a></div>
+        </div>
+
+        <div class="pub-item fade-in">
+          <p class="pub-year">2022</p>
+          <p class="pub-title">Auditory and somatosensory feedback mechanisms of laryngeal and articulatory speech motor control</p>
+          <p class="pub-authors">Weerathunge, H. R., Voon, T., Tardif, M., Cilento, D., &amp; Stepp, C. E.</p>
+          <p class="pub-journal">Experimental Brain Research</p>
+          <div class="pub-links"><a href="https://pubmed.ncbi.nlm.nih.gov/35736994/" target="_blank" class="pub-link">PMID: 35736994 →</a></div>
+        </div>
+
+        <div class="pub-item fade-in">
+          <p class="pub-year">2022</p>
+          <p class="pub-title">What can altered auditory feedback paradigms tell us about vocal motor control in individuals with voice disorders?</p>
+          <p class="pub-authors">Weerathunge, H. R., Tomassi, N. E., &amp; Stepp, C. E.</p>
+          <p class="pub-journal">Perspectives of the ASHA Special Interest Groups</p>
+          <div class="pub-links"><a href="https://pubmed.ncbi.nlm.nih.gov/37397620/" target="_blank" class="pub-link">PMID: 37397620 →</a></div>
+        </div>
+
+        <div class="pub-item fade-in">
+          <p class="pub-year">2021</p>
+          <p class="pub-title">Feedback and Feedforward Auditory-Motor Processes for Voice and Articulation in Parkinson's Disease</p>
+          <p class="pub-authors">Abur, D., Subaciute, A., Daliri, A., Lester-Smith, R., Lupiani, A. A., Cilento, D., Enos, N. M., Weerathunge, H. R., Tardif, M. C., &amp; Stepp, C. E.</p>
+          <p class="pub-journal">Journal of Speech, Language, and Hearing Research</p>
+          <div class="pub-links"><a href="https://pubmed.ncbi.nlm.nih.gov/34731577/" target="_blank" class="pub-link">PMID: 34731577 →</a></div>
+        </div>
+
+        <div class="pub-item fade-in">
+          <p class="pub-year">2021</p>
+          <p class="pub-title">Assessing ecologically valid methods of auditory feedback measurement in individuals with typical speech</p>
+          <p class="pub-authors">Tomassi, N. E., Weerathunge, H. R., Cushman, M. R., Bohland, J. W., Stepp, C. E.</p>
+          <p class="pub-journal">Journal of Speech, Language, and Hearing Research</p>
+          <div class="pub-links"><a href="https://pubmed.ncbi.nlm.nih.gov/34941381/" target="_blank" class="pub-link">PMID: 34941381 →</a></div>
+        </div>
+
+        <div class="pub-item fade-in">
+          <p class="pub-year">2021</p>
+          <p class="pub-title">Reliability and accuracy of expert auditory-perceptual evaluation of voice via telepractice platforms</p>
+          <p class="pub-authors">Dahl, K. L., Weerathunge, H. R., Buckley, D. P., Dolling, A. S., Díaz-Cádiz, M., Tracy, L. F., Stepp, C. E.</p>
+          <p class="pub-journal">American Journal of Speech-Language Pathology</p>
+          <div class="pub-links"><a href="https://pubmed.ncbi.nlm.nih.gov/34473568/" target="_blank" class="pub-link">PMID: 34473568 →</a></div>
+        </div>
+
+        <div class="pub-item fade-in">
+          <p class="pub-year">2021</p>
+          <p class="pub-title">Accuracy of Acoustic Measures of Voice via Telehealth Platforms</p>
+          <p class="pub-authors">Weerathunge, H. R., Segina, R. K., Tracy, L., &amp; Stepp, C. E.</p>
+          <p class="pub-journal">Journal of Speech, Language, and Hearing Research</p>
+          <div class="pub-links"><a href="https://pubmed.ncbi.nlm.nih.gov/34157251/" target="_blank" class="pub-link">PMID: 34157251 →</a></div>
+        </div>
+
+        <div class="pub-item fade-in">
+          <p class="pub-year">2020</p>
+          <p class="pub-title">Auditory-motor perturbations of voice fundamental frequency: feedback delay and amplification</p>
+          <p class="pub-authors">Weerathunge, H. R., Abur, D., Enos, N. M., Brown, K. M., &amp; Stepp, C. E.</p>
+          <p class="pub-journal">Journal of Speech, Language, and Hearing Research, 63(9), 2846–2860</p>
+          <div class="pub-links"><a href="https://pubmed.ncbi.nlm.nih.gov/32755506/" target="_blank" class="pub-link">PMID: 32755506 →</a></div>
+        </div>
+
+        <div class="pub-item fade-in">
+          <p class="pub-year">2020</p>
+          <p class="pub-title">A Simple 3-Parameter Model for Examining Adaptation in Speech and Voice Production</p>
+          <p class="pub-authors">Kearney, E., Nieto-Castañón, A., Weerathunge, H. R., Falsini, R., Daliri, A., Abur, D., &amp; Scott, T. L.</p>
+          <p class="pub-journal">Frontiers in Psychology, 10, 2995</p>
+          <div class="pub-links"><a href="https://pubmed.ncbi.nlm.nih.gov/32038381/" target="_blank" class="pub-link">PMID: 32038381 →</a></div>
+        </div>
+
+        <div style="background: rgba(45,90,78,0.04); border: 1px solid rgba(45,90,78,0.2); border-radius:4px; padding:1.2rem 1.6rem;" class="fade-in">
+          <p style="font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); margin-bottom:0.5rem;">Manuscripts in Review / Preparation</p>
+          <ul style="font-size:0.83rem; color:var(--muted); line-height:1.85; padding-left:1.2rem;">
+            <li>Parra, J. A., et al. incl. <strong>Weerathunge, H. R.</strong> — Modeling laryngeal biomechanical control using machine learning regressors. <em>JASA (in review)</em></li>
+            <li>Tomassi, N. E., <strong>Weerathunge, H. R.</strong>, et al. — Ecologically valid measures of auditory feedback in older adults with/without Parkinson's. <em>JSLHR (in review)</em></li>
+            <li>Tan, D. C., <strong>Weerathunge, H. R.</strong>, et al. — Kinematic features of laryngeal motor control in Parkinson's disease. <em>JSLHR (in review)</em></li>
+            <li><strong>Weerathunge, H. R.</strong>, et al. — Effects of Auditory and Somatosensory Feedback on Motor Control in Parkinson's Disease. <em>JSLHR (in prep)</em></li>
+            <li><strong>Weerathunge, H. R.</strong>, et al. — Effects of Dopaminergic Medication on Auditory and Somatosensory Control in Parkinson's Disease. <em>Movement Disorders (in prep)</em></li>
+            <li><strong>Weerathunge, H. R.</strong>, et al. — White Matter Fiber Density in Children who Stutter: a Fixel-based Analysis. <em>(in prep)</em></li>
+            <li><strong>Weerathunge, H. R.</strong>, et al. — Structure–Function Coupling in Adults who Stutter: Multimodal Connectivity Modeling. <em>(in prep)</em></li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <p class="section-label">Current Work</p>
+      <h2 class="section-title">Projects</h2>
+      <div class="projects-grid">
+
+        <div class="project-card fade-in">
+          <span class="project-icon">🧠</span>
+          <p class="project-title">Neural Bases of Stuttering</p>
+          <p class="project-desc">
+            Investigating structural and functional connectivity differences in adults and children who stutter
+            using multimodal MRI (fMRI, DTI, fixel-based analysis) and connectivity modelling in Dr. Soo-Eun Chang's lab at UMich.
+          </p>
+        </div>
+
+        <div class="project-card fade-in">
+          <span class="project-icon">⚡</span>
+          <p class="project-title">Noninvasive Neuromodulation</p>
+          <p class="project-desc">
+            Developing and applying tACS, tDCS, and low-intensity focused ultrasound stimulation (LIFU)
+            protocols to modulate neural oscillatory synchrony and speech motor circuits, with translational
+            applications for stuttering and motor speech disorders.
+          </p>
+        </div>
+
+        <div class="project-card fade-in">
+          <span class="project-icon">📐</span>
+          <p class="project-title">Neurocomputational Modelling</p>
+          <p class="project-desc">
+            Developing biologically-grounded models of speech motor control, including LaDIVA — a
+            neurocomputational model extending the DIVA framework to include laryngeal motor control
+            for speech acquisition and production.
+          </p>
+        </div>
+
+        <div class="project-card fade-in">
+          <span class="project-icon">🔬</span>
+          <p class="project-title">Sensorimotor Control in Parkinson's Disease</p>
+          <p class="project-desc">
+            Characterising auditory and somatosensory feedback mechanisms of laryngeal and articulatory
+            motor control in individuals with Parkinson's disease, including effects of dopaminergic
+            medication on voice and speech control.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TALKS -->
+    <section id="talks">
+      <p class="section-label">Presentations</p>
+      <h2 class="section-title">Talks & Conferences</h2>
+      <div class="talks-list">
+
+        <p style="font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--accent); margin-bottom:1rem; padding-bottom:0.5rem; border-bottom:1px solid var(--border);">Invited Talks</p>
+
+        <div class="talk-item fade-in">
+          <span class="talk-year">2025</span>
+          <div>
+            <p class="talk-title">Exploring and Modulating Speech Motor Control: Linking Brain, Behavior, and Models <span class="talk-type">Invited</span></p>
+            <p class="talk-venue">Perspectives in Communication Science Seminar Series, University of Pittsburgh, School of Health and Rehabilitation Sciences</p>
+          </div>
+        </div>
+
+        <div class="talk-item fade-in">
+          <span class="talk-year">2023</span>
+          <div>
+            <p class="talk-title">LaDIVA: A neurocomputational model providing laryngeal motor control for speech acquisition and production <span class="talk-type">Invited</span></p>
+            <p class="talk-venue">Neural Bases of Speech Production Symposium, San Francisco, CA</p>
+          </div>
+        </div>
+
+        <div class="talk-item fade-in">
+          <span class="talk-year">2023</span>
+          <div>
+            <p class="talk-title">Accuracy of Acoustic Measures of Voice via Telehealth Platforms <span class="talk-type">Invited</span></p>
+            <p class="talk-venue">Harvard-MIT Speech and Language Biomarkers Interest Group, Boston, MA (Virtual)</p>
+          </div>
+        </div>
+
+        <div class="talk-item fade-in">
+          <span class="talk-year">2022</span>
+          <div>
+            <p class="talk-title">LaDIVA: A neurocomputational model for laryngeal motor control <span class="talk-type">Invited</span></p>
+            <p class="talk-venue">University of Wisconsin Division of Otolaryngology, Voice &amp; Swallow Clinics Lecture Series (Virtual)</p>
+          </div>
+        </div>
+
+        <div class="talk-item fade-in">
+          <span class="talk-year">2022</span>
+          <div>
+            <p class="talk-title">Using Telepractice for the Assessment of Dysarthria and Dysphonia <span class="talk-type">Invited</span></p>
+            <p class="talk-venue">ASHA Convention, New Orleans, LA (Oral Seminar)</p>
+          </div>
+        </div>
+
+        <p style="font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--accent); margin-top:2rem; margin-bottom:1rem; padding-bottom:0.5rem; border-bottom:1px solid var(--border);">Selected Conference Presentations</p>
+
+        <div class="talk-item fade-in">
+          <span class="talk-year">2026</span>
+          <div>
+            <p class="talk-title">Assessing Ecologically Valid Alternative Measures of Auditory Feedback Control in Older Adults with and without Parkinson's Disease</p>
+            <p class="talk-venue">23rd Biennial Madonna Motor Speech Conference, Tempe, AZ (Oral Presentation)</p>
+          </div>
+        </div>
+
+        <div class="talk-item fade-in">
+          <span class="talk-year">2025</span>
+          <div>
+            <p class="talk-title">Structure–Function Coupling in Adults Who Stutter: Evidence from Multimodal Connectivity Modeling</p>
+            <p class="talk-venue">Society for Neurobiology of Language, 17th Annual Meeting, Washington D.C. (Poster)</p>
+          </div>
+        </div>
+
+        <div class="talk-item fade-in">
+          <span class="talk-year">2025</span>
+          <div>
+            <p class="talk-title">Differences in White Matter Fiber Density and Fiber-bundle Cross-section in Children who Stutter: a Fixel-based Analysis</p>
+            <p class="talk-venue">5th Biennial Boston Speech Motor Control Symposium, Boston, MA (Poster)</p>
+          </div>
+        </div>
+
+        <div class="talk-item fade-in">
+          <span class="talk-year">2024</span>
+          <div>
+            <p class="talk-title">Investigating the Effects of Auditory and Somatosensory Feedback on Laryngeal and Articulatory Motor Control in Parkinson's Disease</p>
+            <p class="talk-venue">13th International Seminar on Speech Production, Autrans, France (Oral Presentation)</p>
+          </div>
+        </div>
+
+        <div class="talk-item fade-in">
+          <span class="talk-year">2024</span>
+          <div>
+            <p class="talk-title">Effects of Dopaminergic Medication on Auditory and Somatosensory Control of Voice and Articulation in Parkinson's Disease</p>
+            <p class="talk-venue">22nd Biennial Madonna Motor Speech Conference, San Diego, CA (Oral Presentation)</p>
+          </div>
+        </div>
+
+        <div class="talk-item fade-in">
+          <span class="talk-year">2022</span>
+          <div>
+            <p class="talk-title">LaDIVA: A neurocomputational model providing laryngeal motor control for speech acquisition and production</p>
+            <p class="talk-venue">21st Biennial Madonna Motor Speech Conference, Charleston, SC (Oral Presentation)</p>
+          </div>
+        </div>
+
+        <div class="talk-item fade-in">
+          <span class="talk-year">2021</span>
+          <div>
+            <p class="talk-title">Accuracy of Acoustic Measures of Voice via Telepractice Video Conferencing Platforms</p>
+            <p class="talk-venue">14th International Conference on Advances in Quantitative Laryngology, Virtual/Bogotá, Colombia (Oral Presentation)</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- MENTORING -->
+    <section id="mentoring">
+      <p class="section-label">Teaching & Supervision</p>
+      <h2 class="section-title">Mentoring</h2>
+
+      <!-- Philosophy -->
+      <div class="mentoring-philosophy fade-in">
+        <p>
+          Mentoring is a core part of my academic identity. I believe that good mentorship means
+          meeting students where they are — whether that is helping them run their first experiment,
+          interpret a complex dataset, or navigate the path to graduate school and beyond.
+        </p>
+        <p>
+          My approach is guided by three principles: <strong>curiosity</strong> — encouraging students
+          to ask their own questions; <strong>rigour</strong> — building strong technical and analytical
+          foundations; and <strong>care</strong> — supporting the whole person, not just the project.
+        </p>
+        <p>
+          I have mentored students across a range of contexts, from hands-on research assistantships
+          embedded in my PhD projects, to year-long structured programmes supporting undergraduates
+          as they explore research, higher studies, and career paths in science.
+        </p>
+      </div>
+
+      <!-- Research Mentoring -->
+      <div class="mentoring-category fade-in">
+        <p class="mentoring-category-title">Undergraduate Research Assistants — PhD Project Collaborators</p>
+        <div class="mentee-grid">
+          <div class="mentee-card">
+            <p class="mentee-name">Courtney Dunsmuir</p>
+            <p class="mentee-detail">Undergraduate RA · Assisted with data collection and preprocessing for speech motor adaptation experiments.</p>
+            <span class="mentee-tag">Psychoacoustic Experimentation</span>
+          </div>
+          <div class="mentee-card">
+            <p class="mentee-name">Marrian Tan</p>
+            <p class="mentee-detail">Full-Time Research Fellow · Contributed to tACS protocol development and participant testing.</p>
+            <span class="mentee-tag">Neurostimulation</span>
+          </div>
+          <div class="mentee-card">
+            <p class="mentee-name">Jose Manuel Rojas</p>
+            <p class="mentee-detail">Undergraduate RA · Continuation of LaDIVA computational modeling framework.</p>
+            <span class="mentee-tag">Neurocomputational Modeling</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Undergraduate and Graduate Project Supervision -->
+      <div class="mentoring-category fade-in">
+        <p class="mentoring-category-title">Undergraduate and Graduate Students — Supervision &amp; Committee</p>
+        <div class="mentee-grid">
+          <div class="mentee-card">
+            <p class="mentee-name">Dilys Tan</p>
+            <p class="mentee-detail">Masters Student · Main supervisor. Thesis on Kinematic Measures of Laryngeal Motor Control in Parkinson's Disease.</p>
+            <span class="mentee-tag">Main Supervisor</span>
+          </div>
+          <div class="mentee-card">
+            <p class="mentee-name">Dilan Kavishka Gamage</p>
+            <p class="mentee-detail">Undergraduate Student · Committee member. Project on rsEEG based classification of Parkinson's Disease.</p>
+            <span class="mentee-tag">Committee Member</span>
+          </div>
+          <div class="mentee-card">
+            <p class="mentee-name">Lauren Keith</p>
+            <p class="mentee-detail">PhD Student · Postdoctoral supervisor. Research on Fixel Based Analysis of Children Who Stutter.</p>
+            <span class="mentee-tag">Postdoctoral Supervisor</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Structured Programmes -->
+      <div class="mentoring-category fade-in">
+        <p class="mentoring-category-title">Structured Mentorship Programmes</p>
+        <div class="programs-grid">
+          <div class="program-card">
+            <p class="program-name">ScholarX — Sustainable Education Foundation</p>
+            <p class="program-desc">
+              Year-long mentorship pairing undergraduates globally with researchers. Guided mentees
+              on research skills, graduate school applications, scientific writing, and career
+              exploration in neuroscience and allied fields.
+            </p>
+            <p class="program-meta">Graduate Mentor · Cohorts 2021, 2024</p>
+          </div>
+          <div class="program-card">
+            <p class="program-name">SLAKE — Sri Lankan American Knowledge Exchange</p>
+            <p class="program-desc">
+              Mentored undergraduate students navigating research pathways and graduate school
+              applications, providing guidance on career options within and beyond academia.
+            </p>
+            <p class="program-meta">Graduate Mentor · 2021</p>
+          </div>
+          <div class="program-card">
+            <p class="program-name">WIN — Women in Neuroscience</p>
+            <p class="program-desc">
+              Mentored undergraduate women entering neuroscience, supporting their academic
+              development, research exposure, and building confidence as emerging scientists.
+            </p>
+            <p class="program-meta">Graduate Mentor · 2021–2022</p>
+          </div>
+          <div class="program-card">
+            <p class="program-name">MARC-ASHA Mentoring Academic-Research Careers</p>
+            <p class="program-desc">
+              Participated as a protégé in ASHA's structured mentoring programme, working with
+              faculty mentors across four years while simultaneously mentoring junior students
+              in research and professional development.
+            </p>
+            <p class="program-meta">Protégé · 2021–2024</p>
+          </div>
+        </div>
+        <p style="font-size:0.85rem; color:var(--muted); line-height:1.85;">
+          Across these programmes, mentoring has spanned a broad range of needs: designing and executing
+          technical research projects, preparing competitive graduate school applications, exploring
+          career options within and beyond academia, developing scientific communication skills,
+          and building confidence as emerging researchers.
+        </p>
+      </div>
+
+      <!-- Opportunities -->
+      <div class="opportunities-box fade-in">
+        <h4>Interested in Working Together?</h4>
+        <p>
+          I am always happy to hear from motivated students interested in speech neuroscience,
+          motor control, neuroimaging, or neuromodulation. Whether you are looking for a research
+          assistant position, a final-year project, or informal mentorship around graduate school
+          and career planning, feel free to get in touch.
+        </p>
+        <p>
+          I particularly welcome students from underrepresented backgrounds and those exploring
+          non-traditional paths into research.
+        </p>
+        <div style="margin-top:1.2rem;">
+          <a href="#contact" class="btn btn-primary">Get in Touch</a>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- TEACHING -->
+    <section id="teaching">
+      <p class="section-label">Education & Tutorials</p>
+      <h2 class="section-title">Teaching</h2>
+
+      <!-- Intro -->
+      <p class="fade-in" style="font-size:0.95rem; color:var(--muted); max-width:620px; line-height:1.9; margin-bottom:3rem;">
+        While I am not currently teaching formally, I have experience as a full course instructor
+        and teaching fellow at Boston University, and I am actively developing open tutorial resources
+        in neuroimaging analysis and speech science. I am enthusiastic about teaching at both
+        graduate and undergraduate levels across the topics below.
+      </p>
+
+      <!-- Teaching Interests -->
+      <p class="section-label" style="margin-bottom:0.8rem;">Teaching Interests</p>
+      <div class="teaching-grid fade-in">
+
+        <div class="teaching-card">
+          <span class="teaching-card-icon">🗣️</span>
+          <p class="teaching-card-title">Speech Science & Acoustics</p>
+          <p class="teaching-card-desc">Phonetics, acoustic phonetics, articulatory and laryngeal physiology, auditory perception, and motor speech disorders.</p>
+          <p class="teaching-card-level">Graduate & Undergraduate</p>
+        </div>
+
+        <div class="teaching-card">
+          <span class="teaching-card-icon">📡</span>
+          <p class="teaching-card-title">Biosignal Processing</p>
+          <p class="teaching-card-desc">EEG, EMG, acoustic and kinematic signal acquisition, signal conditioning, filtering, feature extraction, and spectral analysis for biomedical and speech applications.</p>
+          <p class="teaching-card-level">Graduate & Undergraduate</p>
+        </div>
+
+        <div class="teaching-card">
+          <span class="teaching-card-icon">🧩</span>
+          <p class="teaching-card-title">Neuroimaging Analysis</p>
+          <p class="teaching-card-desc">Structural and functional MRI, diffusion-weighted imaging, fixel-based analysis, surface-based morphometry, and connectivity modelling using tools including FSL, MRtrix3, and FreeSurfer.</p>
+          <p class="teaching-card-level">Graduate & Undergraduate</p>
+        </div>
+
+        <div class="teaching-card">
+          <span class="teaching-card-icon">🧠</span>
+          <p class="teaching-card-title">Neural Control of Speech</p>
+          <p class="teaching-card-desc">Cortical and subcortical motor systems for speech, sensorimotor integration, neurocomputational models of speech production, and neural bases of speech disorders.</p>
+          <p class="teaching-card-level">Graduate & Undergraduate</p>
+        </div>
+
+        <div class="teaching-card">
+          <span class="teaching-card-icon">⚙️</span>
+          <p class="teaching-card-title">Research Methods & Statistics</p>
+          <p class="teaching-card-desc">Experimental design, quantitative methods, statistical inference, and programming (Python, MATLAB) for speech, hearing, and biomedical research.</p>
+          <p class="teaching-card-level">Graduate & Undergraduate</p>
+        </div>
+
+        <div class="teaching-card">
+          <span class="teaching-card-icon">🫁</span>
+          <p class="teaching-card-title">Anatomy & Physiology of Speech</p>
+          <p class="teaching-card-desc">Respiratory, laryngeal, and articulatory anatomy and physiology; hearing sciences, hearing loss, and audiometry.</p>
+          <p class="teaching-card-level">Undergraduate</p>
+        </div>
+
+      </div>
+
+      <!-- Teaching Experience -->
+      <p class="section-label" style="margin-bottom:0.8rem; margin-top:0.5rem;">Teaching Experience</p>
+      <div style="margin-bottom:3rem;">
+        <div class="experience-row fade-in">
+          <span class="experience-year">Fall 2022</span>
+          <div>
+            <p class="experience-title">Introduction to Speech Science</p>
+            <p class="experience-role">Full Course Instructor · Boston University (BU SAR SH 523)</p>
+          </div>
+        </div>
+        <div class="experience-row fade-in">
+          <span class="experience-year">Fall 2020</span>
+          <div>
+            <p class="experience-title">Introduction to Programming</p>
+            <p class="experience-role">Graduate Teaching Fellow · Boston University (BU EK 125)</p>
+          </div>
+        </div>
+        <div class="experience-row fade-in">
+          <span class="experience-year">Fall 2019</span>
+          <div>
+            <p class="experience-title">Biomedical Signal Processing</p>
+            <p class="experience-role">Graduate Teaching Assistant · Boston University (BU BE 535)</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tutorials -->
+      <p class="section-label" style="margin-bottom:0.8rem;">Open Tutorials & Resources</p>
+
+      <div class="tutorial-card fade-in">
+        <div class="tutorial-card-header">
+          <p class="tutorial-card-title">Fixel-Based Analysis: A Step-by-Step Tutorial</p>
+          <span class="tutorial-badge tutorial-badge-live">Available</span>
+        </div>
+        <p class="tutorial-card-desc">
+          A comprehensive, reproducible tutorial covering the full fixel-based analysis (FBA) pipeline
+          for diffusion-weighted MRI data — from raw data preprocessing through to group-level
+          statistical analysis. Aimed at researchers and graduate students in neuroimaging who want
+          to apply FBA to investigate white matter microstructure (fibre density and fibre-bundle
+          cross-section) in clinical and developmental populations.
+        </p>
+        <div class="tutorial-topics">
+          <span class="tutorial-topic">DWI Preprocessing</span>
+          <span class="tutorial-topic">MRtrix3</span>
+          <span class="tutorial-topic">FOD Estimation</span>
+          <span class="tutorial-topic">Fixel Correspondence</span>
+          <span class="tutorial-topic">CFE Statistics</span>
+          <span class="tutorial-topic">Visualisation</span>
+        </div>
+        <div class="tutorial-footer">
+          <span>🔧 Tools: MRtrix3 · FSL · Python</span>
+          <a href="https://github.com/HasiniWeerathunge/FixelBasedAnalysis" target="_blank" class="tutorial-link">View on GitHub →</a>
+        </div>
+      </div>
+
+      <div class="tutorial-card fade-in">
+        <div class="tutorial-card-header">
+          <p class="tutorial-card-title">Biosignal Processing for Speech & Voice Research</p>
+          <span class="tutorial-badge tutorial-badge-soon">Coming Soon</span>
+        </div>
+        <p class="tutorial-card-desc">
+          Tutorial series covering acquisition, preprocessing, and analysis of acoustic, EEG, and
+          kinematic signals for speech and voice research. Will include worked examples in Python
+          and MATLAB with real experimental datasets.
+        </p>
+        <div class="tutorial-topics">
+          <span class="tutorial-topic">EEG</span>
+          <span class="tutorial-topic">Acoustics</span>
+          <span class="tutorial-topic">Laryngeal Kinematics</span>
+          <span class="tutorial-topic">Python</span>
+          <span class="tutorial-topic">MATLAB</span>
+        </div>
+        <div class="tutorial-footer">
+          <span>🔧 Tools: Python · MATLAB · MNE</span>
+          <a href="https://github.com/HasiniWeerathunge" target="_blank" class="tutorial-link">GitHub Profile →</a>
+        </div>
+      </div>
+
+      <div class="tutorial-card fade-in">
+        <div class="tutorial-card-header">
+          <p class="tutorial-card-title">Structural & Functional Neuroimaging Analysis</p>
+          <span class="tutorial-badge tutorial-badge-soon">Coming Soon</span>
+        </div>
+        <p class="tutorial-card-desc">
+          Practical guides for structural MRI (surface-based morphometry, cortical thickness),
+          functional MRI (task and resting-state), and multimodal connectivity analyses —
+          applied to speech and language neuroscience research.
+        </p>
+        <div class="tutorial-topics">
+          <span class="tutorial-topic">fMRI</span>
+          <span class="tutorial-topic">FreeSurfer</span>
+          <span class="tutorial-topic">FSL</span>
+          <span class="tutorial-topic">Connectivity</span>
+          <span class="tutorial-topic">Visualisation</span>
+        </div>
+        <div class="tutorial-footer">
+          <span>🔧 Tools: FSL · FreeSurfer · Python · AFNI</span>
+          <a href="https://github.com/HasiniWeerathunge" target="_blank" class="tutorial-link">GitHub Profile →</a>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- TRAINING -->
+    <section id="training">
+      <p class="section-label">Skills & Development</p>
+      <h2 class="section-title">Training</h2>
+
+      <p class="fade-in" style="font-size:0.95rem; color:var(--muted); max-width:620px; line-height:1.9; margin-bottom:3rem;">
+        Alongside my research, I have pursued intensive training in neuroimaging, neuromodulation,
+        computational methods, and professional development — building a broad and technically
+        rigorous skillset across the full pipeline from data acquisition to analysis and dissemination.
+      </p>
+
+      <!-- Neuroimaging & Connectivity -->
+      <div class="training-category fade-in">
+        <p class="training-category-title">Neuroimaging & Connectivity</p>
+        <div class="training-grid">
+          <div class="training-card">
+            <p class="training-card-year">2024</p>
+            <p class="training-card-title">Structural and Functional Brain Connectivity via MRI and fMRI</p>
+            <p class="training-card-org">Martinos Center, Charlestown, Massachusetts</p>
+          </div>
+          <div class="training-card">
+            <p class="training-card-year">2025</p>
+            <p class="training-card-title">Advanced Training in Statistical Methods in Neuroimaging and Genetics</p>
+            <p class="training-card-org">School of Medicine, University of Utah</p>
+          </div>
+          <div class="training-card">
+            <p class="training-card-year">2025</p>
+            <p class="training-card-title">Collaborative Decentralized Research and Analysis of Neuroimaging Data (COINSTAC) Hackathon</p>
+            <p class="training-card-org">TReNDS Center, Georgia State University</p>
+          </div>
+          <div class="training-card">
+            <p class="training-card-year">2021–2022</p>
+            <p class="training-card-title">OHBM International Online Mentoring Programme</p>
+            <p class="training-card-org">Organization for Human Brain Mapping · Mentor: Dr. Douglas Garrett, Max Planck UCL Center</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Neuromodulation -->
+      <div class="training-category fade-in">
+        <p class="training-category-title">Neuromodulation</p>
+        <div class="training-grid">
+          <div class="training-card">
+            <p class="training-card-year">2024</p>
+            <p class="training-card-title">NC NM4R Introductory Neuromodulation for Rehabilitation Workshop</p>
+            <p class="training-card-org">Charleston, South Carolina</p>
+          </div>
+          <div class="training-card">
+            <p class="training-card-year">2024</p>
+            <p class="training-card-title">RP-CNBI Neuromodulation in Aging and Dementia Symposium</p>
+            <p class="training-card-org">Ann Arbor, Michigan</p>
+          </div>
+          <div class="training-card">
+            <p class="training-card-year">2022</p>
+            <p class="training-card-title">3rd International Workshop on Non-Invasive Brain Stimulation (NIBS)</p>
+            <p class="training-card-org">Minneapolis, Minnesota · Fundamentals and Applications of TMS</p>
+          </div>
+          <div class="training-card">
+            <p class="training-card-year">2021</p>
+            <p class="training-card-title">Fundamentals and Applications of Transcranial Magnetic Stimulation (TMS)</p>
+            <p class="training-card-org">Three-day workshop, Brainbox Initiative</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Computational & Methods -->
+      <div class="training-category fade-in">
+        <p class="training-category-title">Computational Methods & BCI</p>
+        <div class="training-grid">
+          <div class="training-card">
+            <p class="training-card-year">2021</p>
+            <p class="training-card-title">BR41N.IO Brain Computer Interface Designers' Hackathon</p>
+            <p class="training-card-org">IEEE SMC · Team Brain Troopers: Motor imagery BCI analysis for chronic stroke patients</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Grant Writing & Career Development -->
+      <div class="training-category fade-in">
+        <p class="training-category-title">Grant Writing & Career Development</p>
+        <div class="training-grid">
+          <div class="training-card">
+            <p class="training-card-year">2025</p>
+            <p class="training-card-title">K99/R00 Bootcamp</p>
+            <p class="training-card-org">University of Michigan Office of Graduate and Postdoctoral Studies (OGPS)</p>
+          </div>
+          <div class="training-card">
+            <p class="training-card-year">2025</p>
+            <p class="training-card-title">K Grant Summer Workshop</p>
+            <p class="training-card-org">University of Michigan Institute for Clinical and Health Research (MICHR)</p>
+          </div>
+          <div class="training-card">
+            <p class="training-card-year">2021–2024</p>
+            <p class="training-card-title">Mentoring Academic-Research Careers (MARC-ASHA) Programme</p>
+            <p class="training-card-org">American Speech-Language-Hearing Association · Four-year structured career mentoring</p>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- BEYOND THE LAB -->
+    <section id="beyond">
+      <p class="section-label">Life Outside Research</p>
+      <h2 class="section-title">Beyond the Lab</h2>
+
+      <p class="fade-in" style="font-size:0.95rem; color:var(--muted); max-width:620px; line-height:1.9; margin-bottom:3rem;">
+        Science is what I do — but curiosity, storytelling, and adventure are who I am.
+        Here's a little of what keeps me going outside the lab.
+      </p>
+
+      <div class="beyond-grid">
+
+        <!-- Stand-up Comedy -->
+        <div class="beyond-feature fade-in">
+          <div class="beyond-feature-header">
+            <span class="beyond-feature-icon">🎤</span>
+            <p class="beyond-feature-title">Stand-up Comedy</p>
+            <p class="beyond-feature-sub">Open Mic · Comedy Writing</p>
+          </div>
+          <div class="beyond-feature-body">
+            <p>
+              In early 2026 I completed a stand-up comedy writing workshop and haven't looked back.
+              I now test tight fives at open mics around Ann Arbor — finding that the discipline
+              of crafting a good joke isn't entirely unlike crafting a good scientific argument.
+              (Both require knowing your audience and cutting everything that doesn't land.)
+            </p>
+            <p>
+              My sets tend to draw on the absurdities of academic life, the immigrant-scientist
+              experience, and the general chaos of being human. Recordings live on Instagram.
+            </p>
+            <a href="https://www.instagram.com/hasiniwee_thecomic" target="_blank" class="beyond-link">
+              📸 @hasiniwee_thecomic
             </a>
-    </div>
+          </div>
+        </div>
 
-    <div class="card">
-        <h3 style="color: #0066cc;">An accurate force field for carbon
-dioxide-silica interactions based on density functional theory</h3>
-        <p><strong>Authors :</strong><strong>Godahewa, S.M.</strong>, Jayawardena, T., Thompson, W.H., Greathouse, J.A.</p>
-        <p><strong>Journal, Year:</strong>Journal of Physical Chemistry B, 2025</p>
-        <a href="assets/pdf/paper2.pdf" target="_blank" style="color: #9c27b0; text-decoration: underline; font-size: 0.95rem;">
-    📄 View PDF
-            </a>
-    </div>
+        <!-- National Parks -->
+        <div class="beyond-feature fade-in">
+          <div class="beyond-feature-header">
+            <span class="beyond-feature-icon">🏔️</span>
+            <p class="beyond-feature-title">National Parks</p>
+            <p class="beyond-feature-sub">Explorer · Hiker · In Progress</p>
+          </div>
+          <div class="beyond-feature-body">
+            <p>
+              I am on a slow but deliberate mission to explore the US National Parks system.
+              There is something grounding about swapping the lab bench for a trail —
+              the scale of geological time has a way of putting grant deadlines in perspective.
+            </p>
+            <p style="font-size:0.78rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); margin-bottom:0.8rem;">Parks visited</p>
+            <div class="parks-list">
+              <div class="park-item"><span class="park-dot"></span> Arches <span class="park-state">Utah</span></div>
+              <div class="park-item"><span class="park-dot"></span> Bryce Canyon <span class="park-state">Utah</span></div>
+              <div class="park-item"><span class="park-dot"></span> Canyonlands <span class="park-state">Utah</span></div>
+              <div class="park-item"><span class="park-dot"></span> Denali <span class="park-state">Alaska</span></div>
+              <div class="park-item"><span class="park-dot"></span> Grand Canyon <span class="park-state">Arizona</span></div>
+              <div class="park-item"><span class="park-dot"></span> Grand Teton <span class="park-state">Wyoming</span></div>
+              <div class="park-item"><span class="park-dot"></span> Great Sand Dunes <span class="park-state">Colarado</span></div>
+              <div class="park-item"><span class="park-dot"></span> Kenai Fjords <span class="park-state">Alaska</span></div>
+              <div class="park-item"><span class="park-dot"></span> Mesa Verde <span class="park-state">Colarado</span></div>
+              <div class="park-item"><span class="park-dot"></span> Rocky Mountain <span class="park-state">Colarado</span></div>
+              <div class="park-item"><span class="park-dot"></span> Yellowstone <span class="park-state">Wyoming</span></div>
+              <div class="park-item"><span class="park-dot"></span> Yosemite <span class="park-state">California</span></div>
+              <div class="park-item"><span class="park-dot"></span> Zion <span class="park-state">Utah</span></div>
+            </div>
+            <p style="font-size:0.78rem; color:var(--muted); margin-top:1rem; margin-bottom:0;">
+              13/61 Done: List in progress — send me your recommendations.
+            </p>
+          </div>
+        </div>
 
-    <div class="card">
-        <h3 style="color: #0066cc;">Effects of Confinement and Pressure
-on the Structure and Dynamics of Carbon Dioxide in Silica Slit Pores.</h3>
-        <p><strong>Authors :</strong><strong>Godahewa, S.M.</strong>, Jayawardena, T., Thompson, W.H., Greathouse, J.A.</p>
-        <p><strong>Journal, Year:</strong>Journal of Chemical Physics, 2026</p>
-        <a href="assets/pdf/paper3.pdf" target="_blank" style="color: #9c27b0; text-decoration: underline; font-size: 0.95rem;">
-    📄 View PDF
-            </a>
-    </div>
+      </div>
+    </section>
 
-    <div class="card">
-        <h3 style="color: #0066cc;">Modeling the
-Structural Heterogeneity of Vicinal Silanols and Its Effects on TiCl4 Grafting onto Amorphous Silica</h3>
-        <p><strong>Authors :</strong> Khan, S.A., <strong>Godahewa, S.M.</strong>, Wimalasiri, P.N., Thompson, W.H., Scott, S.L., Peters, B.</p>
-        <p><strong>Journal, Year:</strong> Chemistry of Materials, 2022</p>
-        <a href="assets/pdf/paper4.pdf" target="_blank" style="color: #9c27b0; text-decoration: underline; font-size: 0.95rem;">
-    📄 View PDF
-            </a>
-    </div>
+    <!-- CONTACT -->
+    <section id="contact">
+      <p class="section-label">Get In Touch</p>
+      <h2 class="section-title">Contact</h2>
+      <div class="contact-inner">
+        <div class="contact-text fade-in">
+          <p>
+            I am always happy to discuss research, potential collaborations, or opportunities
+            in speech neuroscience and neuromodulation.
+          </p>
+          <p>
+            Feel free to reach out via email or connect through any of the channels below.
+          </p>
+        </div>
+        <div class="contact-links fade-in">
+          <a href="mailto:weerathh@med.umich.edu" class="contact-link">
+            <span class="contact-icon">✉</span>
+            weerathh@med.umich.edu
+          </a>
+          <a href="https://github.com/HasiniWeerathunge" target="_blank" class="contact-link">
+            <span class="contact-icon">⌥</span>
+            GitHub
+          </a>
+          <a href="https://scholar.google.com/citations?user=O7q_BygAAAAJ&hl=en" target="_blank" class="contact-link">
+            <span class="contact-icon">🎓</span>
+            Google Scholar
+          </a>
+          <a href="https://x.com/Hasinirw" target="_blank" class="contact-link">
+            <span class="contact-icon">𝕏</span>
+            Twitter / X
+          </a>
+          <a href="https://www.linkedin.com/in/hasiniw" target="_blank" class="contact-link">
+            <span class="contact-icon">in</span>
+            LinkedIn
+          </a>
+        </div>
+      </div>
+    </section>
 
-    <div class="card">
-        <h3 style="color: #0066cc;">Ab Initio-Derived Force Field for Amorphous Silica Interfaces for Use in Molecular Dynamics Simulations</h3>
-        <p><strong>Authors :</strong>Senanayake, H.S., Wimalasiri, P.N., <strong>Godahewa, S.M.</strong>, Thompson, W.H., Greathouse, J.A.</p>
-        <p><strong>Journal, Year:</strong> The Journal of Physical Chemistry C, 2023.</p>
-        <a href="assets/pdf/paper5.pdf" target="_blank" style="color: #9c27b0; text-decoration: underline; font-size: 0.95rem;">
-    📄 View PDF
-            </a>
-    </div>
+  </main>
 
-    <div class="card">
-        <h3 style="color: #0066cc;">Beyond Force Field Mixing Rules to Model Silica-Water Interfaces</h3>
-        <p><strong>Authors :</strong>Jayawardena, T., <strong>Godahewa, S.M.</strong>, Thompson, W.H., Greathouse, J.A.</p>
-        <p><strong>Journal, Year:</strong> Journal of Physical Chemistry C, 2025</p>
-        <a href="assets/pdf/paper6.pdf" target="_blank" style="color: #9c27b0; text-decoration: underline; font-size: 0.95rem;">
-    📄 View PDF
-            </a>
-    </div>
-    
-</section>
+  <footer>
+    © 2026 Hasini Weerathunge · Department of Psychiatry, University of Michigan
+  </footer>
 
-<section id="projects" class="tab-content">
-    <h2>Projects</h2>
-
-    <div class="card">
-        <h3>CO₂ Adsorption in Porous Silica</h3>
-        <p>Molecular simulation study of adsorption and transport.</p>
-    </div>
-
-    <div class="card">
-        <h3>Machine Learning for Materials Discovery</h3>
-        <p>Predictive models for materials properties.</p>
-    </div>
-</section>
-
-<section id="cv" class="tab-content">
-    <h2>CV</h2>
-
-    <div class="card">
-    <h3>Contact Information</h3>
-    <table style="width: 100%; border-collapse: collapse;">
-        <tr>
-            <td style="width: 180px; font-weight: bold; padding-bottom: 12px; vertical-align: top;">Name</td>
-            <td style="padding-bottom: 12px; vertical-align: top;">Sahan M. Godahewa</td>
-        </tr>
-        <tr>
-            <td style="font-weight: bold; padding-bottom: 12px; vertical-align: top;">Professional Title</td>
-            <td style="padding-bottom: 12px; vertical-align: top;">Ph.D. in Chemistry</td>
-        </tr>
-        <tr>
-            <td style="font-weight: bold; padding-bottom: 12px; vertical-align: top;">Email</td>
-            <td style="padding-bottom: 12px; vertical-align: top;">sahanm830@gmail.com</td>
-        </tr>
-        <tr>
-            <td style="font-weight: bold; padding-bottom: 12px; vertical-align: top;">Location</td>
-            <td style="padding-bottom: 12px; vertical-align: top;">Colombo, Sri Lanka</td>
-        </tr>
-    </table>
-</div>
-
-    <div class="card">
-     <h3>Professional Summary</h3>
-        Materials scientist with 5+ years of experience in computational modeling, molecular simulations, and chemistry
-research. Skilled in both advanced computation and laboratory techniques, with a strong passion for teaching,
-mentorship, and translating research into practical applications.
-    </div>
-
-    <div class="card">
-        <h3>Education</h3>
-        <strong>Ph.D. in Chemistry</strong> (2019 — 2025)<br>
-        University of Kansas, USA
-        <br><br>
-        <strong>B.Sc. (Hons)</strong> (2014 — 2018)<br>
-        University of Colombo, Sri Lanka
-    </div>
-
-    <div class="card">
-    <h3>Skills</h3>
-    <table style="width: 100%; border-collapse: collapse;">
-        <tr>
-            <td style="width: 180px; font-weight: bold; padding-bottom: 12px; vertical-align: top;">Programming:</td>
-            <td style="padding-bottom: 12px; vertical-align: top;">Python, Fortran, Shell scripts, HPC scripting</td>
-        </tr>
-        <tr>
-            <td style="font-weight: bold; padding-bottom: 12px; vertical-align: top;">Simulation software packages:</td>
-            <td style="padding-bottom: 12px; vertical-align: top;">LAMMPS, VASP, NWchem, QChem, CP2K</td>
-        </tr>
-        <tr>
-            <td style="font-weight: bold; padding-bottom: 12px; vertical-align: top;">Utility programs:</td>
-            <td style="padding-bottom: 12px; vertical-align: top;">VMD, PyMOL, MS Office, VESTA, GRACE, LaTeX, Blender, AVOGADRO</td>
-        </tr>
-        <tr>
-            <td style="font-weight: bold; padding-bottom: 12px; vertical-align: top;">Experimental techniques:</td>
-            <td style="padding-bottom: 12px; vertical-align: top;">SEM, TGA, FTIR, UV/VIS Spectrophotometer, pH analysis, Calorimetry</td>
-        </tr>
-    </table>
-</div>
-
-    
-    <h3>Download Full CV</h3>
-
-  <a href="assets/pdf/cv.pdf" class="btn">
-      Download PDF
-  </a>
-
-</section>
-
-<section id="contact" class="tab-content">
-    <h2>Contact</h2>
-
-    <p>Email:
-        <a href="mailto:sahanm830@gmail.com">
-        sahanm830@gmail.com
-        </a>
-    </p>
-
-    <p>GitHub:
-        <a href="https://github.com/sahangodahewa" target="_blank">
-        github.com/sahangodahewa
-        </a>
-    </p>
-
-    <p>LinkedIn:
-        <a href="https://www.linkedin.com/in/sahan-godahewa/" target="_blank">
-        LinkedIn/sahangodahewa
-        </a>
-    </p>
-
-    <p>Google Scholar:
-        <a href="https://scholar.google.com/citations?user=-yLiTJUAAAAJ&hl=en&authuser=1" target="_blank">
-        Google Scholar Profile 
-        </a>
-    </p>
-
-    <p>
-        ORCID:
-        <a href="https://orcid.org/0009-0008-8300-6606" target="_blank">
-            ORCID-Sahan Godahewa
-        </a>
-    </p>
-
-    <img src="assets/img/orcid-qr.png"
-         alt="ORCID QR Code"
-         class="orcid-qr">
-
-    
-</section>
-
-</main>
-
-<script src="script.js"></script>
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 80);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
 
 </body>
 </html>
